@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 @Component("wmg")
@@ -40,6 +42,18 @@ public class WishMessageGenerator {
 	@Autowired
 	public void setDate(Date date) {
 		System.out.println("WishMessageGenerator.setDate()");
+		this.date = date;
+	}
+	*/
+	
+	/*												// Arbitary method Injection
+	@Autowired
+	public void putDateTime(LocalDateTime dateTime) {
+		System.out.println("WishMessageGenerator.putDateTime()");
+		this.dateTime = dateTime;
+	}
+	@Autowired
+	public void putDate(Date date) {
 		this.date = date;
 	}
 	*/

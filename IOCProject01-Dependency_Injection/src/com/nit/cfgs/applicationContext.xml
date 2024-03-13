@@ -8,7 +8,16 @@
     http://www.springframework.org/schema/context/spring-context.xsd">
      
      <!-- spring bean cfg by enabling static factory method bean instantiation  -->
-     <bean id="ldt" class="java.time.LocalDateTime" factory-method="now" />
+     <bean id="ldt" class="java.time.LocalDateTime" factory-method="now"  />
+     
+     <bean id="dateTime" class="java.time.LocalDateTime" factory-method="of">
+     		<constructor-arg name="year" value="2020"/>
+     		<constructor-arg name="month" value="10"/>
+     		<constructor-arg name="dayOfMonth" value="30"/>
+     		<constructor-arg name="hour" value="11"/>
+     		<constructor-arg name="minute" value="50"/>
+     		<constructor-arg name="second" value="20"/>
+     </bean>
      
      <bean id="dt" class="java.util.Date" />
      
