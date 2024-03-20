@@ -1,6 +1,7 @@
 //Client app
 package com.nit.client;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -33,25 +34,29 @@ public class RealTimeDI {
 		cust.setDiscount(discount);
 		
 		//create IOC container
+		try (
 		ClassPathXmlApplicationContext ctx = 
 				new ClassPathXmlApplicationContext("com/nit/cfgs/applicationContext.xml");
+				){
 		
 		//get Controller class object from the IOC container (dependency lookup)
 		CustomerOperationsController controller = 
 				ctx.getBean("custController", CustomerOperationsController.class);
 		
 		//invoke the b.method
-		try {
 			String resultMsg = controller.processCustomer(cust);
 			System.out.println(resultMsg);
 		}
+		catch(SQLException se) {
+			if(se.getErrorCode() == 12899)	//SQLError code
+				System.out.println("Problem with column size");
+			else
+				System.out.println("One or another DB problem");
+		}
 		catch(Exception e) {
-			System.out.println("Internal Problem ------ Try again:: " + e.getMessage());
+			System.out.println("Non DB problem\nInternal Problem ------ Try again:: " + e.getMessage());
 			//e.printStackTrace();
 		}
-		
-		//close the IOC container
-		ctx.close();
 		
 	}//main
 }//class
