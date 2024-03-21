@@ -20,7 +20,7 @@ public class CustomerMgmtServiceImpl implements ICustomerMgmtService {
 		customer.setFinalAmount(finalAmount);
 		//use DAO
 		int count = custDAO.insert(customer);
-		return count == 0 ? "Customer registration failed" : "\n\t\tCustomer registration having successfully\n\t\t\tBillAmount \t:: " + customer.getBillAmount() + "\n\t\t\tDiscount Amount \t:: " + discountAmount + "\n\t\t\tfinal Amount \t:: " + finalAmount;
+		return count == 0 ? "Customer registration failed" : "\n\t\t\tCustomer registration having successfully\n\t\t\t\t\tBillAmount \t:: " + customer.getBillAmount() + "\n\t\t\tDiscount Amount \t:: " + discountAmount + "\n\t\t\t\tfinal Amount \t:: " + finalAmount;
 	}
 
 }

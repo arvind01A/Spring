@@ -7,11 +7,20 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
      
-     <bean id="drds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+     <!-- <bean id="drds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
      	<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
      	<property name="url" value="jdbc:oracle:thin:@localhost:1521:orcl"/>
      	<property name="username" value="SPRINGDB"/>
      	<property name="password" value="SPRINGDB"/>
+     </bean> -->
+     <bean id="hkDs" class="com.zaxxer.hikari.HikariDataSource">
+     	<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+     	<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:orcl"/>
+     	<property name="username" value="SPRINGDB"/>
+     	<property name="password" value="SPRINGDB"/>
+     	<property name="minimumIdle" value="10"/>
+     	<property name="maximumPoolSize" value="1000"/>
+     	<property name="idleTimeout" value="30000"/>
      </bean>
      
      <!-- enable the component scanning -->
