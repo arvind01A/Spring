@@ -2,9 +2,11 @@
 package com.nit.sbeans;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 @Component("pInfo")
+@PropertySource("com/nit/commons/myfile.properties")
 public class PersonalInfo {
 	//Injacting values collect from the properties file
 	@Value("${per.name}")
